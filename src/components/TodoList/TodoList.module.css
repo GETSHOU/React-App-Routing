@@ -1,0 +1,23 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
+}
+
+.responseError {
+	text-align: center;
+	font-size: 50px;
+	color: rgb(146, 0, 0);
+}
+
+.message {
+	text-align: center;
+	color: floralwhite;
+	font-size: 2rem;
+}

@@ -1,0 +1,68 @@
+.tools {
+	display: flex;
+	background-color: #3091ba;
+	border-radius: 0 5px 5px 0;
+}
+
+.button {
+	flex: 1;
+	min-width: 90px;
+	padding: 0 5px;
+	color: floralwhite;
+	font-size: 1.1rem;
+	font-weight: bold;
+	transition: all 0.2s ease;
+}
+
+.button:last-child {
+	border-radius: 0 5px 5px 0;
+}
+
+.addButton {
+	background-color: rgb(45, 189, 72);
+}
+
+.addButton:hover {
+	background-color: rgb(85, 215, 109);
+}
+
+.editButton {
+	background-color: rgb(236, 135, 39);
+}
+
+.editButton:hover {
+	background-color: rgb(255, 152, 55);
+}
+
+.deleteButton {
+	background-color: rgb(168, 30, 30);
+}
+
+.deleteButton:hover {
+	background-color: rgb(201, 56, 56);
+}
+
+.saveButton {
+	background-color: rgb(45, 189, 72);
+}
+
+.saveButton:hover {
+	background-color: rgb(85, 215, 109);
+}
+
+.cancelButton {
+	background-color: rgb(138, 138, 138);
+}
+
+.cancelButton:hover {
+	background-color: rgb(174, 174, 174);
+}
+
+.button:disabled {
+	background-color: rgb(138, 138, 138);
+	cursor: initial;
+}
+
+.button:disabled:hover {
+	background-color: rgb(138, 138, 138);
+}
