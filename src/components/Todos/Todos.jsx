@@ -3,6 +3,7 @@ import { useDebounce } from '../../hooks/useDebounce';
 import styles from './Todos.module.css';
 import { TodoList } from '../TodoList/TodoList';
 import { TodoListTools } from '../TodoListTools/TodoListTools';
+import { TodoSearchTools } from '../TodoSearchTools/TodoSearchTools';
 
 import { API_TODOS } from '../../api/api';
 // json-server --watch ./src/data/todoList.json --delay 500 --port 3004
@@ -122,28 +123,36 @@ export const Todos = () => {
 		fetchData();
 	};
 
-	const handleAddTodo = (payload) => addTodo(payload);
-	const handleSearchQuery = ({target}) => setSearchQuery(target.value);
 	const handleSort = (sortByField) => sortingTodos(sortByField);
+	const handleAddTodo = (payload) => addTodo(payload);
+	const handleClearField = () => setSearchQuery('');
+	const handleSearchQuery = ({target}) => setSearchQuery(target.value);
 
 	return (
 		<div className={styles.wrapper}>
 			<h1 className={styles.title}>My Todo-s</h1>
-			<input type="text"
-						 className={`${styles.field} ${styles.fieldSearch}`}
-						 placeholder='Search...'
-						 value={searchQuery}
-						 onChange={handleSearchQuery}/>
 			<div className={styles.toolsWrapper}>
-				<input type="text"
-							 className={styles.field}
-							 value={fieldValue}
-							 onChange={handleChange}/>
-				<TodoListTools
-					fieldValue={fieldValue}
-					handleAddTodo={handleAddTodo}
-					fieldValueChanged={fieldValueChanged}
-				/>
+				<div className={styles.row}>
+					<input type="text"
+								className={`${styles.field} ${styles.fieldSearch}`}
+								placeholder='Search...'
+								value={searchQuery}
+								onChange={handleSearchQuery}/>
+					<TodoSearchTools
+						handleClearField={handleClearField}
+					/>
+				</div>
+				<div className={styles.row}>
+					<input type="text"
+								className={styles.field}
+								value={fieldValue}
+								onChange={handleChange}/>
+					<TodoListTools
+						fieldValue={fieldValue}
+						handleAddTodo={handleAddTodo}
+						fieldValueChanged={fieldValueChanged}
+					/>
+				</div>
 			</div>
 			<button className={styles.sortButton} onClick={() => handleSort('text')}>Sort by a-z</button>
 			<div className={styles.divider}></div>

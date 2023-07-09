@@ -1,0 +1,28 @@
+.tools {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: auto;
+	display: flex;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	color: floralwhite;
+	font-size: 1.1rem;
+	font-weight: bold;
+	border-radius: 5px;
+	transition: all 0.2s ease;
+}
+
+.clearButton {
+	background-color: rgb(45, 189, 72);
+}
+
+.clearButton:hover {
+	background-color: rgb(85, 215, 109);
+}

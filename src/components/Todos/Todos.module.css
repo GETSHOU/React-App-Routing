@@ -5,10 +5,6 @@
 	max-width: 1000px;
 	min-width: 290px;
 	width: 100%;
-	/* padding: 30px 15px; */
-	/* background: rgba(0, 0, 0, 0.1);
-	border-radius: 5px;
-	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1); */
 }
 
 .title {
@@ -22,6 +18,12 @@
 
 .toolsWrapper {
 	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.row {
+	display: flex;
 	align-items: center;
 	width: 100%;
 	height: 50px;
@@ -30,16 +32,19 @@
 	border-radius: 5px;
 	background-color: #f3f3f3;
 	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
-	/* cursor: pointer; */
 	transition: all 0.2s ease;
 }
 
-.toolsWrapper:focus-within {
+.row:first-child {
+	margin-top: 0;
+}
+
+.row:focus-within {
 	background-color: #ffffff;
 	box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-.toolsWrapper:hover {
+.row:hover {
 	background-color: #ffffff;
 	box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.2);
 }
@@ -58,21 +63,16 @@
 }
 
 .fieldSearch {
-	flex: initial;
-	height: 50px;
-	border-radius: 5px;
-	background-color: #f3f3f3;
-	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
-}
-
-.fieldSearch:hover {
-	background-color: #ffffff;
-	box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.2);
-}
-
-.fieldSearch:focus {
+	flex: 1;
+	width: inherit;
+	height: 100%;
+	width: inherit;
+	margin-right: 5px;
 	padding: 0 15px;
-	box-shadow: 2px 5px 8px 0 rgba(0, 0, 0, 0.2);
+	font-size: 1.3rem;
+	border-radius: 5px 0 0 5px;
+	cursor: pointer;
+	transition: all 0.15s ease;
 }
 
 .field:focus {
