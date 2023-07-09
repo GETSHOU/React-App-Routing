@@ -5,7 +5,8 @@ export const TodoListTools = ({fieldValue, handleAddTodo, fieldValueChanged}) =>
 		<div className={styles.tools}>
 			<button className={`${styles.button} ${styles.addButton}`}
 							onClick={() => handleAddTodo({text: fieldValue})}
-							disabled={!fieldValueChanged}>ADD
+							disabled={!fieldValueChanged}>
+								<span className='gg-math-plus'></span>
 			</button>
 		</div>
 	)

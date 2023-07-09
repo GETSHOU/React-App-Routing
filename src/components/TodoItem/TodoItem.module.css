@@ -1,33 +1,77 @@
 .item {
+	position: relative;
 	display: flex;
+	align-items: center;
 	width: 100%;
-	margin-top: 20px;
+	height: 50px;
+	margin-top: 30px;
+	padding-left: 30px;
+	padding-right: 5px;
 	border-radius: 5px;
+	background-color: #f3f3f3;
 	box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
+	cursor: pointer;
 	transition: all 0.2s ease;
+}
+
+.item:focus-within {
+	/* background-color: #ffffff; */
+	box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .item:first-child {
 	margin-top: 0;
 }
 
+.item::before {
+	content: counter(item);
+	counter-increment: item;
+	position: absolute;
+	align-items: flex-end;
+	color: floralwhite;
+	font-size: 1.5rem;
+	font-weight: bold;
+	display: flex;
+	justify-content: flex-end;
+	z-index: 1;
+	left: 10px;
+	top: 0;
+}
+
+.item::after {
+	/* background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%); */
+	background-color: #3091ba;
+	border-radius: 1rem 1rem 0 1rem;
+	content: '';
+	height: 3rem;
+	left: -1rem;
+	overflow: hidden;
+	position: absolute;
+	top: -1rem;
+	width: 3rem;
+}
+
+.item:hover {
+	background-color: #ffffff;
+	box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
 .field {
 	flex: 1;
 	width: inherit;
-	height: 50px;
+	height: 100%;
 	width: inherit;
 	padding: 0 15px;
-	font-size: 1.5rem;
-	line-height: 50;
-	border-radius: 5px 0 0 5px;
-	background-color: #f3f3f3;
-	transition: all 0.2s ease;
+	font-size: 1.3rem;
+	cursor: pointer;
+	background-color: transparent;
+	transition: all 0.15s ease;
 }
 
 .itemIsEdit {
-	box-shadow: 2px 5px 8px 0 rgba(0, 0, 0, 0.2);
+	background-color: #ffffff;
 }
 
-.fieldIsEdit {
+.fieldIsEdit:focus {
 	background-color: #ffffff;
 }

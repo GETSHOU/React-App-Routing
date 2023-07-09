@@ -10,7 +10,7 @@ export const TodoList = ({
 }) => {
 	return (
 		<div className={styles.wrapper}>
-			<ul className={styles.list}>
+			<ol className={styles.list}>
 				{dataToDoList.length > 0
 					? <>
 							{isLoading
@@ -35,7 +35,7 @@ export const TodoList = ({
 							}
 						</>
 				}
-			</ul>
+			</ol>
 		</div>
 	)
 }

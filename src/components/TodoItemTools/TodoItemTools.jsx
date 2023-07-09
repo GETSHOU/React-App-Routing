@@ -16,25 +16,29 @@ export const TodoItemTools = ({
 			{isEdit
 				? null
 				: <button className={`${styles.button} ${styles.editButton}`}
-									onClick={() => handleEdit()}>EDIT
+									onClick={() => handleEdit()}>
+										<span className='gg-pen'></span>
 					</button>
 			}
 			{isEdit
 				? null
 				: <button className={`${styles.button} ${styles.deleteButton}`}
-									onClick={() => handleDelete(id)}>DEL
+									onClick={() => handleDelete(id)}>
+										<span className='gg-trash'></span>
 					</button>
 			}
 			{isEdit
 				? <button className={`${styles.button} ${styles.saveButton}`}
 									onClick={() => handleUpdate(id, fieldValue)}
-									disabled={!fieldValueChanged}>SAVE
+									disabled={!fieldValueChanged}>
+										<span className='gg-check'></span>
 					</button>
 				: null
 			}
 			{isEdit
 				? <button className={`${styles.button} ${styles.cancelButton}`}
-									onClick={() => handleCancel()}>CANCEL
+									onClick={() => handleCancel()}>
+										<span className='gg-close'></span>
 					</button>
 				: null
 			}
