@@ -15,3 +15,7 @@
 .gg-close {
 	transform: scale(1.5);
 }
+
+.gg-backspace {
+	transform: scale(1.2);
+}
