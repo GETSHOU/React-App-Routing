@@ -8,11 +8,10 @@ import { TodoSearchTools } from '../TodoSearchTools/TodoSearchTools';
 import { API_TODOS } from '../../api/api';
 // json-server --watch ./src/data/todoList.json --delay 500 --port 3004
 
-export const Todos = () => {
+export const Todos = ({dataToDoList, setDataToDoList}) => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [fieldValue, setFieldValue] = useState('');
 	const [searchQuery, setSearchQuery] = useState('');
-	const [dataToDoList, setDataToDoList] = useState([]);
 	const [fieldValueChanged, setFieldValueChanged] = useState(false);
 
 	const valueSearch = useDebounce(searchQuery);
@@ -47,7 +46,7 @@ export const Todos = () => {
 		}
 
 		fetchData();
-	}, []);
+	}, [setIsLoading, setDataToDoList]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -62,7 +61,7 @@ export const Todos = () => {
 		}
 
 		fetchData();
-	}, [valueSearch]);
+	}, [valueSearch, setDataToDoList]);
 
 	const addTodo = async (payload) => {
 		const response = await fetch(API_TODOS, {
@@ -76,35 +75,6 @@ export const Todos = () => {
 		setDataToDoList((prevState) => [...prevState, todo]);
 		setFieldValue('');
 		setFieldValueChanged(false);
-	};
-
-	const deleteTodo = async (id) => {
-		await fetch(`${API_TODOS}/${id}`, {
-			method: 'DELETE',
-			headers: {'Content-Type': 'application/json;charset=utf-8'},
-		});
-
-		setDataToDoList(dataToDoList.filter((todo) => todo.id !== id));
-	};
-
-	const sendUpdatedTodo = async (id, payload) => {
-		const todoPosition = dataToDoList.findIndex((todo) => todo.id === id);
-		const currentTodo = dataToDoList.find((todo) => todo.id === id);
-
-		if (todoPosition !== -1) {
-			const response = await fetch(`${API_TODOS}/${id}`, {
-				method: 'PATCH',
-				headers: {'Content-Type': 'application/json;charset=utf-8'},
-				body: JSON.stringify({...currentTodo, text: payload})
-			});
-
-			const updatedTodo = await response.json();
-			const copyDataToDoList = dataToDoList.slice();
-
-			copyDataToDoList[todoPosition] = updatedTodo;
-
-			setDataToDoList(copyDataToDoList);
-		}
 	};
 
 	const sortingTodos = (sortByField) => {
@@ -129,8 +99,7 @@ export const Todos = () => {
 	const handleSearchQuery = ({target}) => setSearchQuery(target.value);
 
 	return (
-		<div className={styles.wrapper}>
-			<h1 className={styles.title}>My Todo-s</h1>
+		<div className={styles.todos}>
 			<div className={styles.toolsWrapper}>
 				<div className={styles.row}>
 					<input type="text"
@@ -155,12 +124,10 @@ export const Todos = () => {
 				</div>
 			</div>
 			<button className={styles.sortButton} onClick={() => handleSort('text')}>Sort by a-z</button>
-			<div className={styles.divider}></div>
+			<div className='divider' />
 			<TodoList
 				isLoading={isLoading}
 				dataToDoList={dataToDoList}
-				handleDelete={deleteTodo}
-				sendUpdatedTodo={sendUpdatedTodo}
 			/>
 		</div>
 	)
