@@ -10,24 +10,18 @@ export const TodoList = ({
 		<>
 			<div className={styles.wrapper}>
 				<ol className={styles.list}>
-					{dataToDoList.length > 0
-						? <>
-								{isLoading
-									? <Loader />
-									: dataToDoList.map((todo) => {
+					{isLoading
+						? <Loader />
+						: <>
+								{ dataToDoList.map((todo, i) => {
 										return (
 											<TodoItem
 												key={todo.id}
 												{...todo}
+												taskPosition={i}
 											/>
 										)
 									})
-								}
-							</>
-						: <>
-								{isLoading
-									? <Loader />
-									: <h2 className={styles.message}>Задач нет</h2>
 								}
 							</>
 					}

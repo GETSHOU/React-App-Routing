@@ -27,3 +27,9 @@ body {
 	background-color: floralwhite;
 	margin-top: 50px;
 }
+
+.textTruncate {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

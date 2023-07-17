@@ -6,7 +6,6 @@ import { TodoListTools } from '../TodoListTools/TodoListTools';
 import { TodoSearchTools } from '../TodoSearchTools/TodoSearchTools';
 
 import { API_TODOS } from '../../api/api';
-// json-server --watch ./src/data/todoList.json --delay 500 --port 3004
 
 export const Todos = ({dataToDoList, setDataToDoList}) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -17,19 +16,19 @@ export const Todos = ({dataToDoList, setDataToDoList}) => {
 	const valueSearch = useDebounce(searchQuery);
 
 	const handleChange = ({target}) => {
-		if (fieldValue !== target.value && target.value !== '') {
-			setFieldValue(target.value);
+		if (target.value !== '') {
 			setFieldValueChanged(true);
 		} else {
-			setFieldValue(target.value);
 			setFieldValueChanged(false);
 		}
+
+		setFieldValue(target.value);
 	};
 
 	useEffect(() => {
-		setIsLoading(true);
-
 		const fetchData = async () => {
+			setIsLoading(true);
+
 			await fetch(API_TODOS)
 				.then((response) => {
 					if (!response.ok) {
@@ -46,7 +45,7 @@ export const Todos = ({dataToDoList, setDataToDoList}) => {
 		}
 
 		fetchData();
-	}, [setIsLoading, setDataToDoList]);
+	}, [setIsLoading]);
 
 	useEffect(() => {
 		const fetchData = async () => {

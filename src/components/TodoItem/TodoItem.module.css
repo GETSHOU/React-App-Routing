@@ -1,5 +1,6 @@
 .item {
 	position: relative;
+	display: flex;
 	width: 100%;
 	height: 50px;
 	margin-top: 30px;
@@ -10,15 +11,42 @@
 	transition: all 0.2s ease;
 }
 
-.linkWrapper {
+.item:first-child {
+	margin-top: 0;
+}
+
+.taskPosition {
+	position: absolute;
 	overflow: hidden;
 	display: flex;
-	width: 100%;
-	height: 100%;
+	justify-content: center;
+	align-items: center;
+	height: 3rem;
+	left: -1.5rem;
+	top: -1rem;
+	min-width: 3rem;
+	width: auto;
+	padding: 0 8px;
+	color: floralwhite;
+	font-size: 1.5rem;
+	font-weight: bold;
+	background-color: #3091ba;
+	border-radius: 1rem 1rem 0 1rem;
+	transition: all 0.2s ease;
+	z-index: 1;
+}
+
+.linkWrapper {
+	display: flex;
+	height: inherit;
+	width: inherit;
+	z-index: 0;
 }
 
 .link {
-	width: 100%;
+	overflow: hidden;
+	height: inherit;
+	width: inherit;
 	padding-top: 10px;
 	padding-left: 50px;
 	padding-right: 15px;
@@ -26,44 +54,12 @@
 	font-size: 1.3rem;
 }
 
-.item:first-child {
-	margin-top: 0;
-}
-
-.item::before {
-	content: counter(item);
-	counter-increment: item;
-	position: absolute;
-	align-items: flex-end;
-	color: floralwhite;
-	font-size: 1.5rem;
-	font-weight: bold;
-	display: flex;
-	justify-content: flex-end;
-	z-index: 1;
-	left: 10px;
-	top: 0;
-}
-
-.item::after {
-	background-color: #3091ba;
-	border-radius: 1rem 1rem 0 1rem;
-	content: '';
-	height: 3rem;
-	left: -1rem;
-	overflow: hidden;
-	position: absolute;
-	top: -1rem;
-	width: 3rem;
-	transition: all 0.2s ease;
-}
-
 .item:hover {
 	background-color: floralwhite;
 	box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-.item:hover::after {
+.item:hover > .taskPosition {
 	background-color: #36a6d7;
 	box-shadow: 0 0 10px 3px rgba(48, 145, 186, 0.3);
 }
